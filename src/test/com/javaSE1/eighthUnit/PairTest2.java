@@ -1,5 +1,6 @@
 package test.com.javaSE1.eighthUnit;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 public class PairTest2 {
@@ -11,22 +12,35 @@ public class PairTest2 {
 //                LocalDate.of(1910, 6, 22),
 //        };
 //
-//        Pair<LocalDate> mm = ArrayAlg.minmax(arr);
-        ArrayList<Student> listStu = new ArrayList<>();
-        listStu.add(new Student("曾小贤", "男", 36, "001"));
-        listStu.add(new Student("关谷神奇", "男", 37, "002"));
-        listStu.add(new Student("吕子乔", "男", 30, "003"));
-        listStu.add(new Student("胡一菲", "女", 34, "004"));
+//        Pair<LocalDate> mm = StaticInnerClass.minmax(arr);
+//        ArrayList<Student> listStu = new ArrayList<>();
+//        listStu.add(new Student("曾小贤", "男", 36, "001"));
+//        listStu.add(new Student("关谷神奇", "男", 37, "002"));
+//        listStu.add(new Student("吕子乔", "男", 30, "003"));
+//        listStu.add(new Student("胡一菲", "女", 34, "004"));
+//
+//        Student[] students = listStu.toArray(new Student[0]);
+//        Pair<Student> mm = ArrayAlg.minmax(students);
+//        System.out.println("min = " + mm.getFirst());
+//        System.out.println("max = " + mm.getSecond());
 
-        Student[] students = listStu.toArray(new Student[0]);
-        Pair<Student> mm = ArrayAlg.minmax(students);
-        System.out.println("min = " + mm.getFirst());
-        System.out.println("max = " + mm.getSecond());
+
+//        ArrayAlg.<Student>getMiddle(new Student("frank"));
+//        Number middle = ArrayAlg.getMiddle(13.1, 2, 9);
+//        System.out.println("middle = " + middle);
+
+        Serializable hello = ArrayAlg.getMiddle("hello", 0, null);
+        System.out.println("hello = " + hello);
+
     }
 
 }
 
 class ArrayAlg {
+
+    public static <T> T getMiddle(T... a) {
+        return a[a.length / 2];
+    }
 
     public static <T extends Comparable> Pair<T> minmax(T[] a) {
         if (a.length == 0 && a == null)

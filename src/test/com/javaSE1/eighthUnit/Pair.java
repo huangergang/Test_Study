@@ -1,10 +1,20 @@
 package test.com.javaSE1.eighthUnit;
 
 
+import util.Reflection;
+
+import javax.swing.*;
 import java.time.LocalDate;
+import java.util.Date;
+import java.util.Dictionary;
 import java.util.function.Supplier;
 
 public class Pair<T> {
+//    private static T t;
+//    public static T ls(){
+//
+//    }
+
     private T First;
     private T Second;
 
@@ -34,6 +44,7 @@ public class Pair<T> {
         Second = second;
     }
 
+
     @Override
     public String toString() {
         return "Pair{" +
@@ -46,13 +57,24 @@ public class Pair<T> {
         return new Pair<>(constr.get(), constr.get());
     }
 
-    public static void main(String[] args) {
-        LocalDate d1 = LocalDate.now();
-        LocalDate d2 = LocalDate.now();
-        DateInterval dateInterval = new DateInterval();
-        Pair<LocalDate> pair = dateInterval;
-        System.out.println(pair.getSecond().getClass().getSimpleName());
+    public static <T> Pair<T> makePair(Class<T> cl) {
+        try {
+            return new Pair<>(cl.newInstance(), cl.newInstance());
+        } catch (Exception e) {
+            return null;
+        }
     }
+
+    public static void main(String[] args) {
+        Pair<String> pair = Pair.makePair(String::new);
+        String first = pair.getFirst();
+        Reflection.show(first.getClass());
+
+        Pair<String> pair1 = Pair.makePair(String.class);
+
+
+    }
+
 }
 
 class DateInterval extends Pair<LocalDate> {
@@ -62,6 +84,5 @@ class DateInterval extends Pair<LocalDate> {
             super.setSecond(second);
         }
     }
-
 
 }

@@ -1,6 +1,4 @@
 package data_structure.demo;
-
-
 import java.util.Calendar;
 
 public interface SpentRuntime {

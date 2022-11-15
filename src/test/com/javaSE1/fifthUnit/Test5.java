@@ -8,10 +8,12 @@ public class Test5 {
 
     }
 }
-interface Desc{
+
+interface Desc {
     String desc();
 }
-class Student implements Desc,Comparable, Comparator {
+
+class Student implements Desc, Comparable, Comparator {
     @Override
     public String desc() {
         return null;
@@ -27,7 +29,8 @@ class Student implements Desc,Comparable, Comparator {
         return 0;
     }
 }
-class Comp implements Comparable{
+
+class Comp implements Comparable {
     @Override
     public int compareTo(Object o) {
         return 0;

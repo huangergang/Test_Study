@@ -1,12 +1,22 @@
 package test.com.javaSE1.fifthUnit;
 
 import java.lang.reflect.*;
-import java.util.Arrays;
 
 public class Test {
+
+    public static Object copyOf(Object a, int newLength) {
+        Class<?> aClass = a.getClass();
+        if (!aClass.isArray()) return null;
+        Class<?> componentType = aClass.getComponentType();
+        int length = Array.getLength(a);
+        Object newArray = Array.newInstance(componentType, newLength);
+        System.arraycopy(a, 0, newArray, 0, Math.min(length, newLength));
+        return newArray;
+    }
+
     public static void main(String[] args) throws Exception {
-//
-//        Class<?> cls1 = Double.class;
+
+//        Class<?> cls1 = Object.class;
 //
 //        Field[] fields = cls1.getFields();
 //        for (Field field : fields) {
@@ -26,26 +36,29 @@ public class Test {
 //            System.out.printf("ReturnType: %44s", annotatedReturnType);
 //            System.out.println();
 //        }
-//
+
 //        Class<Print> printClass = Print.class;
-//        Print print = printClass
-//                .getDeclaredConstructor(String.class)
-//                .newInstance("print1");
+//        Constructor<Print> declaredConstructor = printClass.getDeclaredConstructor(String.class);
+//        declaredConstructor.setAccessible(true);
+//        Print print = declaredConstructor.newInstance("hello");
 //
 //        print.print();
 
-
+//        String[] list = {"1", "2", "3", "4", "5"};
+//        System.out.println(list.length);
+//        list = (String[]) copyOf(list, 10);
+//        System.out.println(list.length);
 
 //        int modifiers = printClass.getModifiers();
 //        System.out.println(Modifier.isAbstract(modifiers));
-//
-//        Method[] methods = Double.class.getMethods();
-//        for (Method m :
-//                methods) {
-//            System.out.printf("Name: %-22s",m.getName());
-//            System.out.printf("Modifier: %-22s",Modifier.toString(m.getModifiers()));
-//            System.out.println();
-//        }
+
+        Method[] methods = Double.class.getMethods();
+        for (Method m :
+                methods) {
+            System.out.printf("Name: %-22s",m.getName());
+            System.out.printf("Modifier: %-22s",Modifier.toString(m.getModifiers()));
+            System.out.println();
+        }
 
 
     }
@@ -124,7 +137,7 @@ class Apple extends Food {
     @Override
     public String toString() {
         return "Apple：" +
-                "name='" + super.getName() ;
+                "name='" + super.getName();
 
     }
 }

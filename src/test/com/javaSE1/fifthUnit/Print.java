@@ -1,12 +1,12 @@
 package test.com.javaSE1.fifthUnit;
 
-public abstract class Print {
+public class Print {
     private String name;
     public String publicName;
     protected String protectedName;
 
 
-    public Print(String name) {
+    private Print(String name) {
         this.name = name;
     }
 

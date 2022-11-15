@@ -6,6 +6,7 @@ import java.util.Calendar;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class MaxSubNumber {
+
     // 算法1 时间复杂度为 O(N^3)
     public static int firstMax(int A[], int N) {
         int ThisSum, MaxSum, i, j, k;
